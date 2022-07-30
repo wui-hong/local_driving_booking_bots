@@ -1,0 +1,968 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="driving_v2" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1210,837" sap2010:WorkflowViewState.IdRef="driving_v2_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="64">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="60">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart DisplayName="Full Flowchart" sap:VirtualizedContainerService.HintSize="634,636" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="session_dt" />
+      <Variable x:TypeArguments="x:String" Name="userid" />
+      <Variable x:TypeArguments="x:String" Name="userpassword" />
+    </Flowchart.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <av:Point x:Key="ShapeLocation">0,12.5</av:Point>
+        <av:Size x:Key="ShapeSize">60,75</av:Size>
+        <av:PointCollection x:Key="ConnectorLocation">60,50 130,50</av:PointCollection>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Flowchart.StartNode>
+      <x:Reference>__ReferenceID1</x:Reference>
+    </Flowchart.StartNode>
+    <FlowStep x:Name="__ReferenceID1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">130,17</av:Point>
+          <av:Size x:Key="ShapeSize">200,66</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">230,83 230,113 220,113 220,167</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence DisplayName="CLICK HERE Read excel and login info" sap:VirtualizedContainerService.HintSize="376,735" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:ReadRange AddHeaders="True" DataTable="[session_dt]" DisplayName="CLICK THE ICON HERE Read Booking excel" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Sheet1" WorkbookPath="BBDC_2B_Booking_Bot\BBDC_2B_Booking_Bot\driving.xlsx">
+          <ui:ReadRange.Range>
+            <InArgument x:TypeArguments="x:String">
+              <Literal x:TypeArguments="x:String" Value="" />
+            </InArgument>
+          </ui:ReadRange.Range>
+        </ui:ReadRange>
+        <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Asking for login ID" sap:VirtualizedContainerService.HintSize="334,238" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="True" Title="What is your login ID?">
+          <ui:InputDialog.Label>
+            <InArgument x:TypeArguments="x:String">
+              <Literal x:TypeArguments="x:String" Value="" />
+            </InArgument>
+          </ui:InputDialog.Label>
+          <ui:InputDialog.Result>
+            <OutArgument x:TypeArguments="x:String">[userid]</OutArgument>
+          </ui:InputDialog.Result>
+        </ui:InputDialog>
+        <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="334,238" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="True" Title="What is your login password">
+          <ui:InputDialog.Label>
+            <InArgument x:TypeArguments="x:String">
+              <Literal x:TypeArguments="x:String" Value="" />
+            </InArgument>
+          </ui:InputDialog.Label>
+          <ui:InputDialog.Result>
+            <OutArgument x:TypeArguments="x:String">[userpassword]</OutArgument>
+          </ui:InputDialog.Result>
+        </ui:InputDialog>
+      </Sequence>
+      <FlowStep.Next>
+        <FlowStep x:Name="__ReferenceID0">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">120,167</av:Point>
+              <av:Size x:Key="ShapeSize">200,66</av:Size>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence DisplayName="Browser Sequence" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Boolean" Name="purchased" />
+              <Variable x:TypeArguments="x:Boolean" Name="booking_popup" />
+              <Variable x:TypeArguments="x:String" Name="data_name" />
+              <Variable x:TypeArguments="x:String" Name="session_number" />
+              <Variable x:TypeArguments="x:Int32" Name="fixed_session_number" />
+              <Variable x:TypeArguments="x:Boolean" Name="session_available" />
+              <Variable x:TypeArguments="x:Boolean" Name="purchase_ok" />
+              <Variable x:TypeArguments="x:Boolean" Name="purchase_made" />
+              <Variable x:TypeArguments="x:Boolean" Name="not_secure_black" />
+              <Variable x:TypeArguments="x:Boolean" Name="not_secure_white" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="1043,9285" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="https://info.bbdc.sg/members-login/">
+              <ui:OpenBrowser.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1009,9184" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'chrome.exe Members'" sap:VirtualizedContainerService.HintSize="967,9092" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="41c974851221aeb56e9c62aadf1f4c34" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Members Login - Google Chrome' /&gt;">
+                      <ui:WindowScope.Body>
+                        <ActivityAction x:TypeArguments="x:Object">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="933,8946" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Typing login ID" sap:VirtualizedContainerService.HintSize="891,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[userid]">
+                              <ui:TypeInto.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cba38811-1941-448f-8ca2-43b2f246ebe3" InformativeScreenshot="1b78d6c33560fe11b5985f5b4da1a62f" Selector="&lt;html app='chrome.exe' title='Members Login' /&gt;&lt;webctrl css-selector='body' tag='BODY' /&gt;&lt;webctrl tag='INPUT' id='txtNRIC' /&gt;">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:TypeInto.Target>
+                            </ui:TypeInto>
+                            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Typing login Password" sap:VirtualizedContainerService.HintSize="891,134" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[userpassword]">
+                              <ui:TypeInto.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3493d9b0-6cda-45c1-a92d-a686d639c9b0" InformativeScreenshot="79ff10d7241a42c5dd5a829f94b5d285" Selector="&lt;html app='chrome.exe' title='Members Login' /&gt;&lt;webctrl id='txtPassword' tag='INPUT' type='password' /&gt;">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:TypeInto.Target>
+                            </ui:TypeInto>
+                            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click login btn" sap:VirtualizedContainerService.HintSize="891,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                              <ui:Click.CursorPosition>
+                                <ui:CursorPosition Position="Center">
+                                  <ui:CursorPosition.OffsetX>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetX>
+                                  <ui:CursorPosition.OffsetY>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetY>
+                                </ui:CursorPosition>
+                              </ui:Click.CursorPosition>
+                              <ui:Click.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f586516f-729f-4b4b-ac10-fec120babf2b" InformativeScreenshot="e6cae698067da61605089280d8ae3a0d" Selector="&lt;html app='chrome.exe' title='Members Login' /&gt;&lt;webctrl tag='INPUT' type='submit' name='btnLogin' /&gt;">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:Click.Target>
+                            </ui:Click>
+                            <ui:ImageFound DisplayName="Image Exists 'chrome.exe Form'" Found="[not_secure_black]" sap:VirtualizedContainerService.HintSize="891,106" sap2010:WorkflowViewState.IdRef="ImageFound_2">
+                              <ui:ImageFound.Image>
+                                <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAE4AAAAQCAYAAAC4LkmaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIvSURBVFhH7ZfNccIwEIUphcxQAk24CM4c1YCGEyefXYMroAGa8KSHNMCN7FN45rFIIgmEDAyHN/HK2r9PPyaT6dts/9LPdTdwjSlsBnvuz949ohK4RTPbt5sP0y6p6XbZydfo6cABWjRo02Y7Di5WaG492rfQU4Jb9AauAAoNt9YwdmI0ETD8ggEPy37cqfMV4hx92+74rlkORXCaw8dBjMbstt+md8GEGHO8s7GpxeVc1tR27+M45zEm7Ag/66OUNyzBBHmOTFCH1jVh4Nzx9MWxMBSOZxxv+sHWnRtX65OYSMymOUahUM2hceCnC5ZAHuL6HLDRHOJxHHBiP5j91TTic6OU8iYfLPIhJ2y/6OPHAQWBuhbiyetqIREh8h0h+8RQLnlOmgO2X2mtSSGUakvzAfOQG7bGo3J5CRU+ygU6+6rCgYXBgdtYhYAeHH0JzkOqgSN0xvc7TButwcqNR9QkfxVILa/CUh/qDJwmzZGmLoHzOy43H2Lx2oxf+RI42NxBPKacl46x2YsOcdajHRDbariUFzbmNjY3t+ATJFaaKEzPOi5PT5vzSuD4rNBh5+44D1nz068GLu1ku8MgjY2+op0cvdui+dG+lBcC7NANJ/mp8eOQ264QAupvPL1fauB83NpXFU1yXrD4uMy/C45z/Mnwi856NFYtL5SDSd3tP4e/lC7YLZVbJOrhwdWau1a1BXlYcDx6/mq5hXiESx9G6CmO6n/oBe5Xmu0/Ac0zab3sqJUTAAAAAElFTkSuQmCC" />
+                              </ui:ImageFound.Image>
+                              <ui:ImageFound.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="3a8da000-f681-4658-8308-d3b10274dc08" TimeoutMS="10000">
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:ImageFound.Target>
+                            </ui:ImageFound>
+                            <ui:ImageFound DisplayName="Image Exists 'chrome.exe Form'" Found="[not_secure_white]" sap:VirtualizedContainerService.HintSize="891,106" sap2010:WorkflowViewState.IdRef="ImageFound_3">
+                              <ui:ImageFound.Image>
+                                <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFEAAAASCAYAAAAjQzL0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAI3SURBVFhH7ZY9csIwEIVzUxdpuANNdAiPSx0gDQUFV2BofAUGDkFoyD6HZz/Wkp0ZPMngcfEmrKT90aeVnLfL1/W26DktECfQAnECLRAn0L9BrE3xvbLfh97cqykJcXe83or3D9OqUV2uemue1awhAmAwgJfjthvbYKOn1p5Cs4e4WxvEDDRsvrDNo0ODibDhFw1+3B/aDj5vEKfzLcpurt5XWYiaw8dBjNrsYr1t5qIJMc6Ys7GLxeVa1lSUn+041zEm7AA/20cub9yDCfJ0TFAH53sQmSR1hX2hLBKbwG88AfSDrR0dNqeHmCiCADhGoWjNoXHgp4fXQL3H9TlgY6OIx3GACuvK7B8AiM+myeVtfHDg95ywtQGyHxYUh9PQovyJ6CkiKYFyjsB9EZAvJCfNAVs7ANKaFEiutmY9wN5zw9Z4VCovAcNHuWQhUnBmkXBmq6sQ3EOkLyF6YEMQeQCM7ztPNz0ELjUeUJP8VThDeRWc+kCjELUAfwKqMYi+E1PrIW5EN+Y7IgcRNjuLV5nrmqtu9q5EnFNrR8S2Gsbywsba2tb6w+9BRBFKGUXq24CHV+d1XQ4if+sBwE69iR645qffEMSmw+3NgzQ29hXsRulbGMyP9lheCOBjWT3kh7IfllRLQwiu/0PqezQE0ccd+jpjw1wXLT4+BL+FyDX+xvgGYD0aaygvlAILjV7nV5Qe3pRKHRg0O4i5jU6h3OHMBiKvp39+phCvee6jOsvr/Le63r4Bhrr+8ICqIb8AAAAASUVORK5CYII=" />
+                              </ui:ImageFound.Image>
+                              <ui:ImageFound.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="6de3688d-6dfc-492f-9ac0-b03dac61955e" TimeoutMS="10000">
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:ImageFound.Target>
+                            </ui:ImageFound>
+                            <If Condition="[not_secure_black]" sap:VirtualizedContainerService.HintSize="891,523" sap2010:WorkflowViewState.IdRef="If_6">
+                              <If.Then>
+                                <Sequence sap:VirtualizedContainerService.HintSize="376,347" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="found black" />
+                                  <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click chrome send anyway" sap:VirtualizedContainerService.HintSize="334,154" sap2010:WorkflowViewState.IdRef="ClickImage_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                    <ui:ClickImage.CursorPosition>
+                                      <ui:CursorPosition Position="Center">
+                                        <ui:CursorPosition.OffsetX>
+                                          <InArgument x:TypeArguments="x:Int32" />
+                                        </ui:CursorPosition.OffsetX>
+                                        <ui:CursorPosition.OffsetY>
+                                          <InArgument x:TypeArguments="x:Int32" />
+                                        </ui:CursorPosition.OffsetY>
+                                      </ui:CursorPosition>
+                                    </ui:ClickImage.CursorPosition>
+                                    <ui:ClickImage.Image>
+                                      <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFsAAAAVCAYAAAApZJKFAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJRSURBVFhH7ZbBbcMwDEU7SgpkhCzhIXLOUQsIOeXks2fwBFkgSxjdoQvklvK7+TbDSrKMGkaa6vCRUJZI6lGi/bZ5396K1lGBvaIK7BVVYK+oAntFPQ3sSuTOnfxvfzx7FWXB3lfbW33+FF17Vc01OO83KrBFAO0F9Ka6jGNHADkN9hIqsEWAvW8FdgQuINUCCSfei1gUrHNSJHdohxuxO8LPuLZuxmfVoYvC1jGsH/ioxK7bS//MieBjh2cythG/nMuc6uZjGOc8+oTtsU72EYvrDmCCOCMT5GH3ZzUJm8mEWofdEDeDzeI/Wg/XwdY3xB9PDz6RLEFxjMLmdAztB+t0kXv4d782BmwAgT+OA6hvO7G/QcE/D1csbr8GB+MeE3bOrcx+QWITqK5O3lZYnwokR/B8xsLYZKHchHUM2PZE6Zw0uFhu/XwU4B4bduiEhuKyEFijucSUDZtCEG4GQXjFtJCEhc21hG3BpmCzUPRvT7KGkwIcGvfISf1qiKm4GrBek9Js2DrRVEWnYNuTHZoPccMagD1hMdiweVLZQjivbzFi7xv4OQ22g2/JYSoubMytZG7OjYQmYSNZXTVsRvcuvEBCVU3B5n9dKNihnm0Lo+NzXQp2f2OkJ0PaN/bl5YbqXu1lHe2puBAK5JruIX5K2S/I0FWCkIT+Btf9MgXb+k19jQAM5znxjxdaLmzOsTfQHhTmo32l4kKhAqQ0u438RekiL6lQYVN6edhzgczR3CK+LGy2Bdv2lhDbS87nnta/aCPPogJ7RRXYq2l7+wIO7AP1yA2YhwAAAABJRU5ErkJggg==" />
+                                    </ui:ClickImage.Image>
+                                    <ui:ClickImage.Target>
+                                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="5cc24b33-195d-44d9-9e71-2875100d4213">
+                                        <ui:Target.TimeoutMS>
+                                          <InArgument x:TypeArguments="x:Int32" />
+                                        </ui:Target.TimeoutMS>
+                                        <ui:Target.WaitForReady>
+                                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                                        </ui:Target.WaitForReady>
+                                      </ui:Target>
+                                    </ui:ClickImage.Target>
+                                  </ui:ClickImage>
+                                </Sequence>
+                              </If.Then>
+                              <If.Else>
+                                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_24">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Sequence>
+                              </If.Else>
+                            </If>
+                            <If Condition="[not_secure_white]" sap:VirtualizedContainerService.HintSize="891,523" sap2010:WorkflowViewState.IdRef="If_7">
+                              <If.Then>
+                                <Sequence sap:VirtualizedContainerService.HintSize="376,347" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="found white" />
+                                  <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click chrome send anyway" sap:VirtualizedContainerService.HintSize="334,154" sap2010:WorkflowViewState.IdRef="ClickImage_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                    <ui:ClickImage.CursorPosition>
+                                      <ui:CursorPosition Position="Center">
+                                        <ui:CursorPosition.OffsetX>
+                                          <InArgument x:TypeArguments="x:Int32" />
+                                        </ui:CursorPosition.OffsetX>
+                                        <ui:CursorPosition.OffsetY>
+                                          <InArgument x:TypeArguments="x:Int32" />
+                                        </ui:CursorPosition.OffsetY>
+                                      </ui:CursorPosition>
+                                    </ui:ClickImage.CursorPosition>
+                                    <ui:ClickImage.Image>
+                                      <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFYAAAAVCAYAAADcmhk1AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJASURBVFhH7ZZBboNADEV7UxbZ5BBZVOIQiO3su4qUVa6QLLkCUi5B/Sk/+bVmBqKC2hK+NG0MjO15Nk7euk2LaAO7kDawC2kDu5A2sAvpT4BtbIVdbX+vvb0GjYI9t11X7N5t7fvVVPvhznx6ObCAWhrUrj0NV+zaEYe3GzPqJcGeDwY2ARJACgOCTi5tsQDYF6wg4XK9d/rtCD8PFdXjXnOpk2A1hvcDH43ZxeHU3wu24OOGe3atM78Ucyqqj/t1PkefsEvss3Ok4oYLmCDOgwny8OfLgmXg2Ovvk2fiOBg+Y3xwH2zt/PLYfvOJxAjFCwfRGOoH+7SgPejBr48BG4eHP14HvPJQm/0FBf7ZSKm4/R40wRATdqwpJn15IWFUTRP1ldNqIxFC5j0WwScGpZLz0hiQ7xTNSSGlcuufB+whNmzfeVAsLqFjj3KhJoGl4JCJwyFfE10I6MFCTCYGMQeWRaF/36EKIgczdr1ETvJfgeXiKkzdo3oKrCaVqhQ0BtZ3bOx5iIfTw/rOSYGF2IEcA1Q/Jsw+V/DT3u0A35bDWFzYeLaxZ1MNkQWLxLQaSFxnDYZ7rFo5sPysRYEdm7G+CBofGgPbvwk2Q7HUN85V2puns7W0fbTH4kIoRqjqb/FVk768Yq8DhID6G1fnWw6s95v7VQAIfC6Yf3zZTAUL+SJCvimYj/rKxYVisFVPjYL/KC3onIoVUbVqsGOH/4nGCrZKsHy1/eiaQxwRqS9uavWj4Le0gV1IG9hF1HWfCWTDJiRjZDcAAAAASUVORK5CYII=" />
+                                    </ui:ClickImage.Image>
+                                    <ui:ClickImage.Target>
+                                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="5cc24b33-195d-44d9-9e71-2875100d4213">
+                                        <ui:Target.TimeoutMS>
+                                          <InArgument x:TypeArguments="x:Int32" />
+                                        </ui:Target.TimeoutMS>
+                                        <ui:Target.WaitForReady>
+                                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                                        </ui:Target.WaitForReady>
+                                      </ui:Target>
+                                    </ui:ClickImage.Target>
+                                  </ui:ClickImage>
+                                </Sequence>
+                              </If.Then>
+                              <If.Else>
+                                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_26">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Sequence>
+                              </If.Else>
+                            </If>
+                            <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="891,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
+                            <ui:InterruptibleWhile Condition="True" DisplayName="While" sap:VirtualizedContainerService.HintSize="891,6880" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+                              <ui:InterruptibleWhile.Body>
+                                <Sequence sap:VirtualizedContainerService.HintSize="855,6715" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                                  <Sequence.Variables>
+                                    <Variable x:TypeArguments="x:String" Name="variable2" />
+                                  </Sequence.Variables>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <Delay Duration="[TimeSpan.FromSeconds(30)]" sap:VirtualizedContainerService.HintSize="813,22" sap2010:WorkflowViewState.IdRef="Delay_2" />
+                                  <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="On Element Appear 'TD'" sap:VirtualizedContainerService.HintSize="813,374" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_1" RepeatForever="False">
+                                    <ui:OnUiElementAppear.Body>
+                                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,198" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Booking " sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                          <ui:Click.CursorPosition>
+                                            <ui:CursorPosition Position="Center">
+                                              <ui:CursorPosition.OffsetX>
+                                                <InArgument x:TypeArguments="x:Int32" />
+                                              </ui:CursorPosition.OffsetX>
+                                              <ui:CursorPosition.OffsetY>
+                                                <InArgument x:TypeArguments="x:Int32" />
+                                              </ui:CursorPosition.OffsetY>
+                                            </ui:CursorPosition>
+                                          </ui:Click.CursorPosition>
+                                          <ui:Click.Target>
+                                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d084803d-5876-4c36-8893-e77a856de4be" InformativeScreenshot="a73f4ff895fb522f78809c1d6995ff36" Selector="&lt;html app='chrome.exe' title='BBDC: Booking' /&gt;&lt;webctrl src='inc-webpage/b-sidenav-2.asp' tag='FRAME' /&gt;&lt;webctrl aaname='Booking' tableRow='14' tag='A' /&gt;">
+                                              <ui:Target.TimeoutMS>
+                                                <InArgument x:TypeArguments="x:Int32" />
+                                              </ui:Target.TimeoutMS>
+                                              <ui:Target.WaitForReady>
+                                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                                              </ui:Target.WaitForReady>
+                                            </ui:Target>
+                                          </ui:Click.Target>
+                                        </ui:Click>
+                                      </Sequence>
+                                    </ui:OnUiElementAppear.Body>
+                                    <ui:OnUiElementAppear.Target>
+                                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="72e5aa07-1bf1-45d7-bd38-c8e68e8685f0" InformativeScreenshot="66378a9a89047b6a6752d77f2186bc84" Selector="&lt;html app='chrome.exe' title='BBDC: Booking' /&gt;&lt;webctrl src='inc-webpage/b-sidenav-2.asp' tag='FRAME' /&gt;&lt;webctrl aaname='Booking' tableRow='14' tag='A' /&gt;" TimeoutMS="60000">
+                                        <ui:Target.WaitForReady>
+                                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                                        </ui:Target.WaitForReady>
+                                      </ui:Target>
+                                    </ui:OnUiElementAppear.Target>
+                                  </ui:OnUiElementAppear>
+                                  <Assign sap:VirtualizedContainerService.HintSize="813,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Boolean">[purchased]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="813,544" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                                    <ui:CommentOut.Body>
+                                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="476,466" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="On Element Appear 'INPUT'" sap:VirtualizedContainerService.HintSize="434,374" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_2" RepeatForever="False">
+                                          <ui:OnUiElementAppear.Body>
+                                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,198" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click I agree" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                                <ui:Click.CursorPosition>
+                                                  <ui:CursorPosition Position="Center">
+                                                    <ui:CursorPosition.OffsetX>
+                                                      <InArgument x:TypeArguments="x:Int32" />
+                                                    </ui:CursorPosition.OffsetX>
+                                                    <ui:CursorPosition.OffsetY>
+                                                      <InArgument x:TypeArguments="x:Int32" />
+                                                    </ui:CursorPosition.OffsetY>
+                                                  </ui:CursorPosition>
+                                                </ui:Click.CursorPosition>
+                                                <ui:Click.Target>
+                                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="438101b8-3628-4e91-a862-77c978fb98d6" InformativeScreenshot="b238748436c85b2cc83128ec28e1849c" Selector="&lt;html app='chrome.exe' title='BBDC: Booking' /&gt;&lt;webctrl src='b-default.asp' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' aaname='I Agree' /&gt;">
+                                                    <ui:Target.TimeoutMS>
+                                                      <InArgument x:TypeArguments="x:Int32" />
+                                                    </ui:Target.TimeoutMS>
+                                                    <ui:Target.WaitForReady>
+                                                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                    </ui:Target.WaitForReady>
+                                                  </ui:Target>
+                                                </ui:Click.Target>
+                                              </ui:Click>
+                                            </Sequence>
+                                          </ui:OnUiElementAppear.Body>
+                                          <ui:OnUiElementAppear.Target>
+                                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2e53e2fe-05ea-406d-a45e-f76165b02c24" InformativeScreenshot="0df0bfd5692b23a48d4be45cc28e75cf" Selector="&lt;html app='chrome.exe' title='BBDC: Booking' /&gt;&lt;webctrl src='b-default.asp' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' aaname='I Agree' class='btn' /&gt;">
+                                              <ui:Target.TimeoutMS>
+                                                <InArgument x:TypeArguments="x:Int32" />
+                                              </ui:Target.TimeoutMS>
+                                              <ui:Target.WaitForReady>
+                                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                                              </ui:Target.WaitForReady>
+                                            </ui:Target>
+                                          </ui:OnUiElementAppear.Target>
+                                        </ui:OnUiElementAppear>
+                                      </Sequence>
+                                    </ui:CommentOut.Body>
+                                  </ui:CommentOut>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="813,5463" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                                    <Sequence.Variables>
+                                      <Variable x:TypeArguments="x:String" Name="purchase" />
+                                    </Sequence.Variables>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click all month" sap:VirtualizedContainerService.HintSize="771,68" sap2010:WorkflowViewState.IdRef="Click_14" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                      <ui:Click.CursorPosition>
+                                        <ui:CursorPosition Position="Center">
+                                          <ui:CursorPosition.OffsetX>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:CursorPosition.OffsetX>
+                                          <ui:CursorPosition.OffsetY>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:CursorPosition.OffsetY>
+                                        </ui:CursorPosition>
+                                      </ui:Click.CursorPosition>
+                                      <ui:Click.Target>
+                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="860e58ce-0f50-4123-9d1d-10ba253e9308" Selector="&lt;html app='chrome.exe' title='BBDC: Booking' /&gt;&lt;webctrl src='b-default.asp' tag='FRAME' /&gt;&lt;webctrl name='allMonth' tag='INPUT' type='checkbox' /&gt;">
+                                          <ui:Target.TimeoutMS>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:Target.TimeoutMS>
+                                          <ui:Target.WaitForReady>
+                                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                                          </ui:Target.WaitForReady>
+                                        </ui:Target>
+                                      </ui:Click.Target>
+                                    </ui:Click>
+                                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click all sessions" sap:VirtualizedContainerService.HintSize="771,68" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                      <ui:Click.CursorPosition>
+                                        <ui:CursorPosition Position="Center">
+                                          <ui:CursorPosition.OffsetX>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:CursorPosition.OffsetX>
+                                          <ui:CursorPosition.OffsetY>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:CursorPosition.OffsetY>
+                                        </ui:CursorPosition>
+                                      </ui:Click.CursorPosition>
+                                      <ui:Click.Target>
+                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="12c60f95-8e29-4a13-91f3-0e27d9cc289d" Selector="&lt;html app='chrome.exe' title='BBDC: Booking' /&gt;&lt;webctrl src='b-default.asp' tag='FRAME' /&gt;&lt;webctrl id='checkSes' name='allSes' tag='INPUT' type='checkbox' /&gt;">
+                                          <ui:Target.TimeoutMS>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:Target.TimeoutMS>
+                                          <ui:Target.WaitForReady>
+                                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                                          </ui:Target.WaitForReady>
+                                        </ui:Target>
+                                      </ui:Click.Target>
+                                    </ui:Click>
+                                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click all days" sap:VirtualizedContainerService.HintSize="771,68" sap2010:WorkflowViewState.IdRef="Click_6" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                      <ui:Click.CursorPosition>
+                                        <ui:CursorPosition Position="Center">
+                                          <ui:CursorPosition.OffsetX>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:CursorPosition.OffsetX>
+                                          <ui:CursorPosition.OffsetY>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:CursorPosition.OffsetY>
+                                        </ui:CursorPosition>
+                                      </ui:Click.CursorPosition>
+                                      <ui:Click.Target>
+                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a49408e6-57d3-46dd-b3cd-bfd1a2f898ac" Selector="&lt;html app='chrome.exe' title='BBDC: Booking' /&gt;&lt;webctrl src='b-default.asp' tag='FRAME' /&gt;&lt;webctrl id='checkDay' name='allDay' tag='INPUT' type='checkbox' /&gt;">
+                                          <ui:Target.TimeoutMS>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:Target.TimeoutMS>
+                                          <ui:Target.WaitForReady>
+                                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                                          </ui:Target.WaitForReady>
+                                        </ui:Target>
+                                      </ui:Click.Target>
+                                    </ui:Click>
+                                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'INPUT'" sap:VirtualizedContainerService.HintSize="771,106" sap2010:WorkflowViewState.IdRef="Click_7" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                      <ui:Click.CursorPosition>
+                                        <ui:CursorPosition Position="Center">
+                                          <ui:CursorPosition.OffsetX>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:CursorPosition.OffsetX>
+                                          <ui:CursorPosition.OffsetY>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:CursorPosition.OffsetY>
+                                        </ui:CursorPosition>
+                                      </ui:Click.CursorPosition>
+                                      <ui:Click.Target>
+                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="281522dd-1d3f-4bca-afc2-3dabcbcbbf1a" InformativeScreenshot="ece11c8bd0a78f1a8eb3b8cd4eab7afa" Selector="&lt;html app='chrome.exe' title='BBDC: Booking' /&gt;&lt;webctrl src='b-default.asp' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' type='button' aaname='Search' class='btn' /&gt;">
+                                          <ui:Target.TimeoutMS>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:Target.TimeoutMS>
+                                          <ui:Target.WaitForReady>
+                                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                                          </ui:Target.WaitForReady>
+                                        </ui:Target>
+                                      </ui:Click.Target>
+                                    </ui:Click>
+                                    <Assign sap:VirtualizedContainerService.HintSize="771,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:Boolean">[booking_popup]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <ui:UiElementExists DisplayName="Element Exists 'text You'" Exists="[booking_popup]" sap:VirtualizedContainerService.HintSize="771,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+                                      <ui:UiElementExists.Target>
+                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c83cc19e-91fb-48eb-a952-e489232c11c6" InformativeScreenshot="89149a96520dcf3b90abe35abd76fea1" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='BBDC: Booking - Google Chrome' /&gt;&lt;ctrl name='www.bbdc.sg says' role='dialog' /&gt;&lt;ctrl name='Cancel' role='push button' aastate='focusable' /&gt;" TimeoutMS="120000">
+                                          <ui:Target.WaitForReady>
+                                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                                          </ui:Target.WaitForReady>
+                                        </ui:Target>
+                                      </ui:UiElementExists.Target>
+                                    </ui:UiElementExists>
+                                    <Delay Duration="00:00:10" sap:VirtualizedContainerService.HintSize="771,22" sap2010:WorkflowViewState.IdRef="Delay_4" />
+                                    <If Condition="[booking_popup]" sap:VirtualizedContainerService.HintSize="771,282" sap2010:WorkflowViewState.IdRef="If_1">
+                                      <If.Then>
+                                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click cancel" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_8" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                          <ui:Click.CursorPosition>
+                                            <ui:CursorPosition Position="Center">
+                                              <ui:CursorPosition.OffsetX>
+                                                <InArgument x:TypeArguments="x:Int32" />
+                                              </ui:CursorPosition.OffsetX>
+                                              <ui:CursorPosition.OffsetY>
+                                                <InArgument x:TypeArguments="x:Int32" />
+                                              </ui:CursorPosition.OffsetY>
+                                            </ui:CursorPosition>
+                                          </ui:Click.CursorPosition>
+                                          <ui:Click.Target>
+                                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b6a8e31a-c55c-474a-8ecd-84aef198837e" InformativeScreenshot="95d18bea21ed8e319ba1b1121b4ff96e" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='BBDC: Booking - Google Chrome' /&gt;&lt;ctrl name='www.bbdc.sg says' role='dialog' /&gt;&lt;ctrl name='Cancel' role='push button' aastate='focusable' /&gt;">
+                                              <ui:Target.TimeoutMS>
+                                                <InArgument x:TypeArguments="x:Int32" />
+                                              </ui:Target.TimeoutMS>
+                                              <ui:Target.WaitForReady>
+                                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                                              </ui:Target.WaitForReady>
+                                            </ui:Target>
+                                          </ui:Click.Target>
+                                        </ui:Click>
+                                      </If.Then>
+                                    </If>
+                                    <Delay Duration="00:00:10" sap:VirtualizedContainerService.HintSize="771,22" sap2010:WorkflowViewState.IdRef="Delay_3" />
+                                    <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="On Element booking slots" sap:VirtualizedContainerService.HintSize="771,2177" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_7" RepeatForever="False">
+                                      <ui:OnUiElementAppear.Body>
+                                        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[session_dt]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="680,2001" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                                          <ui:ForEachRow.Body>
+                                            <ActivityAction x:TypeArguments="sd:DataRow">
+                                              <ActivityAction.Argument>
+                                                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                                              </ActivityAction.Argument>
+                                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="646,1882" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                                                <Sequence.Variables>
+                                                  <Variable x:TypeArguments="x:String" Name="variable1" />
+                                                  <Variable x:TypeArguments="x:String" Name="date_name" />
+                                                </Sequence.Variables>
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <Assign sap:VirtualizedContainerService.HintSize="604,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                                                  <Assign.To>
+                                                    <OutArgument x:TypeArguments="x:String">[date_name]</OutArgument>
+                                                  </Assign.To>
+                                                  <Assign.Value>
+                                                    <InArgument x:TypeArguments="x:String">[CurrentRow(0).ToString]</InArgument>
+                                                  </Assign.Value>
+                                                </Assign>
+                                                <Assign sap:VirtualizedContainerService.HintSize="604,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                                  <Assign.To>
+                                                    <OutArgument x:TypeArguments="x:String">[session_number]</OutArgument>
+                                                  </Assign.To>
+                                                  <Assign.Value>
+                                                    <InArgument x:TypeArguments="x:String">[CurrentRow(1).ToString]</InArgument>
+                                                  </Assign.Value>
+                                                </Assign>
+                                                <Assign sap:VirtualizedContainerService.HintSize="604,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                                                  <Assign.To>
+                                                    <OutArgument x:TypeArguments="x:Int32">[fixed_session_number]</OutArgument>
+                                                  </Assign.To>
+                                                  <Assign.Value>
+                                                    <InArgument x:TypeArguments="x:Int32">[(CInt(session_number)) + 2]</InArgument>
+                                                  </Assign.Value>
+                                                </Assign>
+                                                <Assign sap:VirtualizedContainerService.HintSize="604,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+                                                  <Assign.To>
+                                                    <OutArgument x:TypeArguments="x:Boolean">[session_available]</OutArgument>
+                                                  </Assign.To>
+                                                  <Assign.Value>
+                                                    <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                                  </Assign.Value>
+                                                </Assign>
+                                                <Sequence sap:VirtualizedContainerService.HintSize="604,1390" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="562,61" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="[date_name]" />
+                                                  <ui:UiElementExists DisplayName="Check if available" Exists="[session_available]" sap:VirtualizedContainerService.HintSize="562,106" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+                                                    <ui:UiElementExists.Target>
+                                                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c920a707-147d-4284-89fc-ca08f30b5fc7" InformativeScreenshot="fbf77b5a56aa64690797564488b275c5" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='BBDC: Booking' /&gt;&lt;webctrl src='b-default.asp' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' type='radio' rowName='{0}' tableCol='{1}' /&gt;&quot;, date_name, fixed_session_number)]" TimeoutMS="1000">
+                                                        <ui:Target.WaitForReady>
+                                                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                        </ui:Target.WaitForReady>
+                                                      </ui:Target>
+                                                    </ui:UiElementExists.Target>
+                                                  </ui:UiElementExists>
+                                                  <If Condition="[session_available]" sap:VirtualizedContainerService.HintSize="562,1051" sap2010:WorkflowViewState.IdRef="If_2">
+                                                    <If.Then>
+                                                      <Sequence sap:VirtualizedContainerService.HintSize="526,875" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                                        <sap:WorkflowViewStateService.ViewState>
+                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                          </scg:Dictionary>
+                                                        </sap:WorkflowViewStateService.ViewState>
+                                                        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="484,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="foud" />
+                                                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'INPUT  3_0'" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="Click_9" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                                          <ui:Click.CursorPosition>
+                                                            <ui:CursorPosition Position="Center">
+                                                              <ui:CursorPosition.OffsetX>
+                                                                <InArgument x:TypeArguments="x:Int32" />
+                                                              </ui:CursorPosition.OffsetX>
+                                                              <ui:CursorPosition.OffsetY>
+                                                                <InArgument x:TypeArguments="x:Int32" />
+                                                              </ui:CursorPosition.OffsetY>
+                                                            </ui:CursorPosition>
+                                                          </ui:Click.CursorPosition>
+                                                          <ui:Click.Target>
+                                                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="60a4ecef-314d-4909-be90-73d99574e613" InformativeScreenshot="3d0105a6a0842fb18d9f14d0863043a9" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='BBDC: Booking' /&gt;&lt;webctrl src='b-default.asp' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' type='radio' rowName='{0}' tableCol='{1}' /&gt;&quot;, date_name, fixed_session_number)]">
+                                                              <ui:Target.TimeoutMS>
+                                                                <InArgument x:TypeArguments="x:Int32" />
+                                                              </ui:Target.TimeoutMS>
+                                                              <ui:Target.WaitForReady>
+                                                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                              </ui:Target.WaitForReady>
+                                                            </ui:Target>
+                                                          </ui:Click.Target>
+                                                        </ui:Click>
+                                                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="Click_10" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                                          <ui:Click.CursorPosition>
+                                                            <ui:CursorPosition Position="Center">
+                                                              <ui:CursorPosition.OffsetX>
+                                                                <InArgument x:TypeArguments="x:Int32" />
+                                                              </ui:CursorPosition.OffsetX>
+                                                              <ui:CursorPosition.OffsetY>
+                                                                <InArgument x:TypeArguments="x:Int32" />
+                                                              </ui:CursorPosition.OffsetY>
+                                                            </ui:CursorPosition>
+                                                          </ui:Click.CursorPosition>
+                                                          <ui:Click.Target>
+                                                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e9dabe80-f72e-4cd3-852c-aa2a5f9719f7" InformativeScreenshot="c5622fbc79ebf61d0d9d3eca1855ce02" Selector="&lt;html app='chrome.exe' title='BBDC: Booking' /&gt;&lt;webctrl src='b-default.asp' tag='FRAME' /&gt;&lt;webctrl name='btnSearch' tag='INPUT' type='button' aaname='Submit' /&gt;">
+                                                              <ui:Target.TimeoutMS>
+                                                                <InArgument x:TypeArguments="x:Int32" />
+                                                              </ui:Target.TimeoutMS>
+                                                              <ui:Target.WaitForReady>
+                                                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                              </ui:Target.WaitForReady>
+                                                            </ui:Target>
+                                                          </ui:Click.Target>
+                                                        </ui:Click>
+                                                        <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                                          <Assign.To>
+                                                            <OutArgument x:TypeArguments="x:Boolean">[purchased]</OutArgument>
+                                                          </Assign.To>
+                                                          <Assign.Value>
+                                                            <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                                          </Assign.Value>
+                                                        </Assign>
+                                                        <If Condition="[purchased]" sap:VirtualizedContainerService.HintSize="484,290" sap2010:WorkflowViewState.IdRef="If_8">
+                                                          <If.Then>
+                                                            <Sequence sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                </scg:Dictionary>
+                                                              </sap:WorkflowViewStateService.ViewState>
+                                                              <ui:Break sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Break_1" />
+                                                            </Sequence>
+                                                          </If.Then>
+                                                          <If.Else>
+                                                            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_31">
+                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                </scg:Dictionary>
+                                                              </sap:WorkflowViewStateService.ViewState>
+                                                            </Sequence>
+                                                          </If.Else>
+                                                        </If>
+                                                      </Sequence>
+                                                    </If.Then>
+                                                    <If.Else>
+                                                      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                                        <sap:WorkflowViewStateService.ViewState>
+                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                          </scg:Dictionary>
+                                                        </sap:WorkflowViewStateService.ViewState>
+                                                      </Sequence>
+                                                    </If.Else>
+                                                  </If>
+                                                </Sequence>
+                                              </Sequence>
+                                            </ActivityAction>
+                                          </ui:ForEachRow.Body>
+                                        </ui:ForEachRow>
+                                      </ui:OnUiElementAppear.Body>
+                                      <ui:OnUiElementAppear.Target>
+                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="57360dd8-862f-4c6e-b3d8-00d422d32164" InformativeScreenshot="306a278131e6e5ccb38a17ab72536dcf" Selector="&lt;html app='chrome.exe' title='BBDC: Booking' /&gt;&lt;webctrl src='b-default.asp' tag='FRAME' /&gt;&lt;webctrl tag='TD' aaname='Subject No: ' class='txtbold' /&gt;">
+                                          <ui:Target.TimeoutMS>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:Target.TimeoutMS>
+                                          <ui:Target.WaitForReady>
+                                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                                          </ui:Target.WaitForReady>
+                                        </ui:Target>
+                                      </ui:OnUiElementAppear.Target>
+                                    </ui:OnUiElementAppear>
+                                    <If Condition="[purchased]" sap:VirtualizedContainerService.HintSize="771,1992" sap2010:WorkflowViewState.IdRef="If_5">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <If.Then>
+                                        <Sequence sap:VirtualizedContainerService.HintSize="735,1816" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                                          <Sequence.Variables>
+                                            <Variable x:TypeArguments="x:String" Name="str" />
+                                          </Sequence.Variables>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="On Element Appear 'TD'" sap:VirtualizedContainerService.HintSize="693,374" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_5" RepeatForever="False">
+                                            <ui:OnUiElementAppear.Body>
+                                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,198" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click confirm" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_12" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                                  <ui:Click.CursorPosition>
+                                                    <ui:CursorPosition Position="Center">
+                                                      <ui:CursorPosition.OffsetX>
+                                                        <InArgument x:TypeArguments="x:Int32" />
+                                                      </ui:CursorPosition.OffsetX>
+                                                      <ui:CursorPosition.OffsetY>
+                                                        <InArgument x:TypeArguments="x:Int32" />
+                                                      </ui:CursorPosition.OffsetY>
+                                                    </ui:CursorPosition>
+                                                  </ui:Click.CursorPosition>
+                                                  <ui:Click.Target>
+                                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9f2abdca-3b18-4286-b54f-51c38f95e24e" InformativeScreenshot="1d322d1d570cdc6f1a4820b3559787db" Selector="&lt;html app='chrome.exe' title='BBDC: Booking' /&gt;&lt;webctrl src='b-default.asp' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' type='submit' aaname='Confirm' /&gt;">
+                                                      <ui:Target.TimeoutMS>
+                                                        <InArgument x:TypeArguments="x:Int32" />
+                                                      </ui:Target.TimeoutMS>
+                                                      <ui:Target.WaitForReady>
+                                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                      </ui:Target.WaitForReady>
+                                                    </ui:Target>
+                                                  </ui:Click.Target>
+                                                </ui:Click>
+                                              </Sequence>
+                                            </ui:OnUiElementAppear.Body>
+                                            <ui:OnUiElementAppear.Target>
+                                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="259b854c-3385-47f3-b22d-f4f160a461ae" InformativeScreenshot="14251287f791193059e998897e67e48d" Selector="&lt;html app='chrome.exe' title='BBDC: Booking' /&gt;&lt;webctrl src='b-default.asp' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' type='submit' aaname='Confirm' /&gt;">
+                                                <ui:Target.TimeoutMS>
+                                                  <InArgument x:TypeArguments="x:Int32" />
+                                                </ui:Target.TimeoutMS>
+                                                <ui:Target.WaitForReady>
+                                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                </ui:Target.WaitForReady>
+                                              </ui:Target>
+                                            </ui:OnUiElementAppear.Target>
+                                          </ui:OnUiElementAppear>
+                                          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="693,690" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+                                            <ui:CommentOut.Body>
+                                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="526,612" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <ui:UiElementExists DisplayName="Element Exists 'push button  OK'" Exists="[purchase_ok]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
+                                                  <ui:UiElementExists.Target>
+                                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3a1726a1-5289-411c-9195-4ac247ae0563" InformativeScreenshot="50b848df70cb86a83139e462968abee8" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='BBDC: Booking - Google Chrome' /&gt;&lt;ctrl name='www.bbdc.sg says' role='dialog' /&gt;&lt;ctrl name='OK' role='push button' /&gt;">
+                                                      <ui:Target.TimeoutMS>
+                                                        <InArgument x:TypeArguments="x:Int32" />
+                                                      </ui:Target.TimeoutMS>
+                                                      <ui:Target.WaitForReady>
+                                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                      </ui:Target.WaitForReady>
+                                                    </ui:Target>
+                                                  </ui:UiElementExists.Target>
+                                                </ui:UiElementExists>
+                                                <If Condition="[purchase_ok]" sap:VirtualizedContainerService.HintSize="484,374" sap2010:WorkflowViewState.IdRef="If_3">
+                                                  <If.Then>
+                                                    <Sequence sap:VirtualizedContainerService.HintSize="376,198" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                      <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_13" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                                        <ui:Click.CursorPosition>
+                                                          <ui:CursorPosition Position="Center">
+                                                            <ui:CursorPosition.OffsetX>
+                                                              <InArgument x:TypeArguments="x:Int32" />
+                                                            </ui:CursorPosition.OffsetX>
+                                                            <ui:CursorPosition.OffsetY>
+                                                              <InArgument x:TypeArguments="x:Int32" />
+                                                            </ui:CursorPosition.OffsetY>
+                                                          </ui:CursorPosition>
+                                                        </ui:Click.CursorPosition>
+                                                        <ui:Click.Target>
+                                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="231a553a-620b-4680-a7e8-73ed462ff798" InformativeScreenshot="a7dd252679888bd9c2a63413bd5b42bd" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='BBDC: Booking - Google Chrome' /&gt;&lt;ctrl name='www.bbdc.sg says' role='dialog' /&gt;&lt;ctrl name='OK' role='push button' /&gt;">
+                                                            <ui:Target.TimeoutMS>
+                                                              <InArgument x:TypeArguments="x:Int32" />
+                                                            </ui:Target.TimeoutMS>
+                                                            <ui:Target.WaitForReady>
+                                                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                            </ui:Target.WaitForReady>
+                                                          </ui:Target>
+                                                        </ui:Click.Target>
+                                                      </ui:Click>
+                                                    </Sequence>
+                                                  </If.Then>
+                                                  <If.Else>
+                                                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                    </Sequence>
+                                                  </If.Else>
+                                                </If>
+                                              </Sequence>
+                                            </ui:CommentOut.Body>
+                                          </ui:CommentOut>
+                                          <ui:ImageFound DisplayName="Image Exists 'chrome.exe BBDC:'" Found="[purchase_made]" sap:VirtualizedContainerService.HintSize="693,106" sap2010:WorkflowViewState.IdRef="ImageFound_1">
+                                            <ui:ImageFound.Image>
+                                              <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAIUAAAALCAYAAABRYE6UAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJSSURBVFhH7VdLbsIwFGTbAyJxHlY9CeImYREpu2xYZsOGM7iewKjDyHYSCEmROpIl4s97b+aN03QT3ozmcAnn7Vf8dblNCNoqjg3WTreJD0K9P4U61o762+q0Go9rHPX2GK6H3W1iBvSm6OKoN989SY65SK5pCgqmvLo98r0Gr3tNc48xBerL9SCFB1OEKo47cBPmELBkineCnJxDE3mF7nh/eg5rcUphrCmm9DJrCifubxPdC/B16rfR4+C5wfnYGL1hjH8+IMeuj+PC4yxzYJRu55jGabwU11QtXgO4lniAaxe5Yq7d/+qHeOcOsdJcS3r7GsYipkCTmcjdeI4HQIb7tQHcyyJ0zV9jSTEtDnNiL83E55wpxt4ePQ++zD1UixuuxAPgHDXxPXymnnxWvVvoHeO7vmO5Pm0KdZ66D0U1KEpeu/zzkipKRaKAbRVNcZ8jUmLmjMl8hDdVwZo0lsPjKcehWsaYQs/6nGvmz85N+XgvUvo7EO9pU+SIqFMJCKOm0LO6H/vcZMRUU+j5MaYoCeXxkL9B/j9iCr2cHDjvvVjUFACFcHcCWFNTaFEqEgTE72v8jX2aY0hMbQTzEXo2BW+cw+Mpx6FaljBFrnbvxaKm0DkmZmAU5t8UFMX3qoCeZ4op3ARYK5mC8VwM/veBePqNgni5OoElTcH92mjkwHnfy17o3ldR/KZIEUutARCNa9oIF1ANNcUUgObAl3zuNhEUkGdStXFeYw3V8m5TADzD+vQCUMN+PtZRbx8N5PB6h9Cb4hMBov4W+MccCOEHshs1JycRqLAAAAAASUVORK5CYII=" />
+                                            </ui:ImageFound.Image>
+                                            <ui:ImageFound.Target>
+                                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="b26d56ee-3fad-4494-97e9-20d3f6840681" TimeoutMS="10000">
+                                                <ui:Target.WaitForReady>
+                                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                </ui:Target.WaitForReady>
+                                              </ui:Target>
+                                            </ui:ImageFound.Target>
+                                          </ui:ImageFound>
+                                          <If Condition="[purchase_made]" sap:VirtualizedContainerService.HintSize="693,434" sap2010:WorkflowViewState.IdRef="If_4">
+                                            <If.Then>
+                                              <Sequence sap:VirtualizedContainerService.HintSize="376,277" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="purchase" />
+                                                <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,84" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;PURCHASE MADE! CLOSE THE BOT!&quot;]" />
+                                              </Sequence>
+                                            </If.Then>
+                                            <If.Else>
+                                              <Sequence sap:VirtualizedContainerService.HintSize="272,153" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="230,61" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="purchase no" />
+                                              </Sequence>
+                                            </If.Else>
+                                          </If>
+                                        </Sequence>
+                                      </If.Then>
+                                      <If.Else>
+                                        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_18">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </Sequence>
+                                      </If.Else>
+                                    </If>
+                                  </Sequence>
+                                </Sequence>
+                              </ui:InterruptibleWhile.Body>
+                            </ui:InterruptibleWhile>
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:WindowScope.Body>
+                    </ui:WindowScope>
+                  </Sequence>
+                </ActivityAction>
+              </ui:OpenBrowser.Body>
+            </ui:OpenBrowser>
+          </Sequence>
+        </FlowStep>
+      </FlowStep.Next>
+    </FlowStep>
+    <x:Reference>__ReferenceID0</x:Reference>
+  </Flowchart>
+</Activity>
